@@ -17,7 +17,7 @@ app.get('/:nome', (req, res) => {
     res.status(200).json({mensagem: `Bem vindo à API ${nome}`})
 })
 
-app.get('/teste', (req, res) => {
+app.get('/api/teste', (req, res) => {
     res.status(200).json({mensagem: "Essa é uma pagina de teste da API"})
 })
 
