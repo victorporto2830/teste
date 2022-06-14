@@ -18,7 +18,7 @@ app.get('/:nome', (req, res) => {
 })
 
 app.get('/teste', (req, res) => {
-    res.status(200).json({mensagem: "Essa é uma pagina de teste da API"})
+    res.status(200).json({mensagem: "Pagina indisponivel"})
 })
 
 app.listen(port, ()=> {
