@@ -2,23 +2,17 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const bodyParser = require('body-parser');
+const Router = require("./router/index");
 const port = process.env.PORT || 3000;
 
-app.use(express.json());
-app.use(cors());
-app.use(bodyParser.urlencoded({extended:true}))
+app.use(
+    express.json(),
+    cors(),
+    bodyParser.urlencoded({extended:true}),
+    Router);
 
 app.get(`/`, (req, res)=>{
-    res.send('Bem vindo a API')
-})
-
-app.get('/:nome', (req, res) => {
-    nome = req.params.nome;
-    res.status(200).json({mensagem: `Bem vindo à API ${nome}`})
-})
-
-app.get('/api/teste', (req, res) => {
-    res.status(200).json({mensagem: "Essa é uma pagina de teste da API"})
+    res.send('<h1 style="text-align: center;">Bem vindo à API</h1>')
 })
 
 app.listen(port, ()=> {
