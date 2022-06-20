@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const db = require("../database/database");
 const Pessoa = require("../models/PessoaModel");
-const pessoadb = require('../models/PessoaDb');
 
 class PessoaController {
 
@@ -35,7 +34,7 @@ class PessoaController {
   };
 
   static async Listar (req, res) {
-    const pessoa = await pessoa.Listar();
+    const pessoa = await Pessoa.Listar();
     res.status(200).json(pessoa);
   };
 
@@ -45,10 +44,19 @@ class PessoaController {
       id,
       nome
     })
-    await pessoa.Cadastrar();
+    await pessoa.Cadastro()
     res.status(201)
   };
 
+  static async ListarId (req, res) {
+    const pessoa = await Pessoa.BuscaId(req.params.id);
+    res.status(200).json(pessoa);
+  };
+
+  static async Delete (req, res) {
+    await Pessoa.Delete(req.params.id);
+    res.status(200).json({mensagem: "Pessoa deletada"});
+  };
 };
 
 module.exports = PessoaController;

@@ -7,27 +7,23 @@ class Pessoa {
     }
     
     static async Cadastro() {
-        return PessoaDb.Cadastro(this)
+        return await PessoaDb.Cadastro(this)
     }
 
     static async Update() {
-        return PessoaDb.UpdateNome(this)
+        return await PessoaDb.UpdateNome(this)
     }
 
     static async Delete(id) {
-        return PessoaDb.DeleteId(id)
+        return await PessoaDb.DeleteId(id)
     }
 
     static async BuscaId(id) {
-        return PessoaDb.BuscaId(id)
+        return await PessoaDb.BuscaId(id)
     }
 
     static async Listar() {
-        return PessoaDb.Lista()
-    }
-
-    static async Cadastrar() {
-        await PessoaDb.Cadastro()
+        return await PessoaDb.Lista()
     }
 }
 module.exports = Pessoa;

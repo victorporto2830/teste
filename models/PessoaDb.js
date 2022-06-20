@@ -47,12 +47,10 @@ const db = require('../database/database');
     },
 
     Lista: () => {
-        return new Promise((resolve, rejects) => {
             db.query(`SELECT * FROM Pessoa`, 
             (erro, result) => {
-                if (erro) return {code: 500, result: erro};
-                else return {code: 200, result: result};
+                if (erro) rejects("Erro ao listar pessoas");
+                else resolve(result);
             })
-        })
     }
  }
