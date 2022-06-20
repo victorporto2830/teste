@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../database/database")
+const db = require("../database/database");
+const Pessoa = require("../models/PessoaModel");
 
 class PessoaController {
 
@@ -30,7 +31,13 @@ class PessoaController {
       if(erro) console.log(erro)
       else res.status(200).json({mensagem: "Pessoa deletada com sucesso"})
     })
-  }
+  };
+
+  static async Listar (req, res) {
+    const pessoa = await Pessoa.Listar();
+    res.status(200).json(pessoa);
+  };
+
 };
 
 module.exports = PessoaController;
