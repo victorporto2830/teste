@@ -4,5 +4,6 @@ const db = require("../database/database");
 const PessoaController = require("../controller/PessoaController")
 
 router.get("/", PessoaController.Listar);
+router.post("/", PessoaController.Cadastro);
 
 module.exports = router;

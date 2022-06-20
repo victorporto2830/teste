@@ -25,5 +25,9 @@ class Pessoa {
     static async Listar() {
         return PessoaDb.Lista()
     }
+
+    static async Cadastrar() {
+        await PessoaDb.Cadastro()
+    }
 }
 module.exports = Pessoa;

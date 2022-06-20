@@ -38,6 +38,11 @@ class PessoaController {
     res.status(200).json(pessoa);
   };
 
+  static async Cadastro (req, res) {
+    const pessoa = await Pessoa.Cadastrar()
+    res.status(201)
+  };
+
 };
 
 module.exports = PessoaController;
