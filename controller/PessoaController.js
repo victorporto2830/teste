@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../database/database");
 const Pessoa = require("../models/PessoaModel");
+const pessoadb = require('../models/PessoaDb');
 
 class PessoaController {
 
@@ -34,12 +35,17 @@ class PessoaController {
   };
 
   static async Listar (req, res) {
-    const pessoa = await Pessoa.Listar();
+    const pessoa = await pessoa.Listar();
     res.status(200).json(pessoa);
   };
 
   static async Cadastro (req, res) {
-    const pessoa = await Pessoa.Cadastrar()
+    const { id, nome } = req.body;
+    const pessoa = new Pessoa({
+      id,
+      nome
+    })
+    await pessoa.Cadastrar();
     res.status(201)
   };
 
